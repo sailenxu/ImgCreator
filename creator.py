@@ -1,6 +1,18 @@
 from PIL import Image, ImageDraw, ImageFont
 
-#生成图片，绘制图片内容
+# 需求：生成不同size的图片
+
+
+# 此方法生成的图片由于是单色，size不会很大，并且利用两次for循环来设置每个像素的颜色，很耗时，不可取
+def create_img():
+    img = Image.new("RGB", (3000, 3000))
+    pix = (255, 0, 255, 50)
+    for i in range(3000):
+        for j in range(3000):
+            img.putpixel((i, j), pix)
+    img.save("baa.png")
+
+
 def draw_image(new_img, text, show_image=False):
     text = str(text)
     draw = ImageDraw.Draw(new_img)
@@ -23,7 +35,9 @@ def draw_image(new_img, text, show_image=False):
     if show_image:
         new_img.show()
     del draw
-#生成图片
+
+
+# 生成图片
 def new_image(width, height, text='default', color=(100, 100, 100, 255), show_image=False):
     new_img = Image.new('RGBA', (int(width), int(height)), color)
     draw_image(new_img, text, show_image)
@@ -42,5 +56,6 @@ def new_image_with_file(fn):
 
                 new_image(*ls)
 
+
 if __name__ == '__main__':
-    new_image(400, 300, '400*500', show_image=True)
+    create_img()
