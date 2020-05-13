@@ -12,7 +12,6 @@ def create_img():
             img.putpixel((i, j), pix)
     img.save("baa.png")
 
-
 def draw_image(new_img, text, show_image=False):
     text = str(text)
     draw = ImageDraw.Draw(new_img)
